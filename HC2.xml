@@ -31,112 +31,6 @@
 			
 -->	
 
-
-<stylemenu id="r4menu" defaultvalue="summer" defaultlang="en">
-	
-	<!-- LAYER CITY -->
-	<layer id="pub_rest_city" enabled="true" visible="false">
-		<name lang="en" value="food_drink" />
-		<cat id="pub_rest_city" />
-	</layer>
-	<layer id="accommodation_city" enabled="true" visible="false">
-		<name lang="en" value="accommodation" />
-		<cat id="accommodation_city" />
-	</layer>
-	
-	<!-- LAYER SUMMER -->
-	<layer id="cycling_routes" enabled="true" visible="false">
-		<name lang="en" value="cycling_routes" />
-		<cat id="cyc_routes" />
-	</layer>	
-	<layer id="mtb_trails" enabled="true" visible="false">
-		<name lang="en" value="mtb_trails" />
-		<cat id="cyc_mtb_routes" />
-	</layer>	
-	<layer id="hiking_trails" enabled="true" visible="false">
-		<name lang="en" value="hiking_trails" />
-		<cat id="hik_routes" />
-	</layer>	
-	<layer id="pub_rest_topo" enabled="true" visible="false">
-		<name lang="en" value="food_drink" />
-		<cat id="pub_rest_topo" />
-	</layer>
-	
-	<!-- LAYER CAR -->
-	<layer id="pub_rest_car" enabled="true" visible="false">
-		<name lang="en" value="food_drink" />
-		<cat id="pub_rest_car" />
-	</layer>
-	
-	<!-- CAR -->
-	<layer id="car" visible="true">
-		<name lang="en" value="Car" />
-		<cat id="base_car" />
-		<cat id="accommodation_car" />
-		<cat id="highways_car" />			
-		<cat id="shopping_car" />
-		<cat id="transportation_car" />
-		
-		<overlay id="pub_rest_car" />
-	</layer>
-	
-	<!-- CITY -->
-	<layer id="city" visible="true">
-		<name lang="en" value="City" />
-		<cat id="no_car" />
-		<cat id="city" />
-		<cat id="base_city" />		
-		
-		<cat id="health_city" />
-		<cat id="highways_city" />
-		<cat id="religion_city" />
-		<cat id="shopping_city" />
-		<cat id="tourism_city" />
-		<cat id="transportation_city" />	
-		
-		<overlay id="pub_rest_city" />
-		<overlay id="accommodation_city" />
-		
-	</layer> 
-	
-	<!-- SUMMER -->
-	<layer id="hike_bike" visible="true">
-		<name lang="en" value="Hike, Bike" />
-		<cat id="no_car" />
-		<cat id="base_summer" />
-		<cat id="base_topo" />
-		<cat id="accommodation_topo" />
-		<cat id="natural_topo" />
-		<cat id="highways_topo" />
-		<cat id="health_topo" />
-		<cat id="shopping_topo" />
-		<cat id="tourism_topo" />
-		<cat id="transportation_topo" />
-		
-		<overlay id="cycling_routes" />
-		<overlay id="mtb_trails" />
-		<overlay id="hiking_trails" />		
-		<overlay id="pub_rest_topo" />
-	</layer>
-	
-	<!-- WINTER -->
-	<layer id="ski" visible="true" >
-		<name lang="en" value="Ski" />
-		<cat id="no_car" />
-		<cat id="base_winter" />
-		<cat id="base_topo" />
-		<cat id="accommodation_topo" />
-		<cat id="natural_topo" />
-		<cat id="highways_topo" />	
-		<cat id="pistes" />	
-		<cat id="shopping_topo" />
-		<cat id="tourism_topo" />
-		<cat id="transportation_topo" />
-		
-		<overlay id="pub_rest_topo" />
-	</layer>
-
-</stylemenu>	
 	
 	<!-- Render sea -->
 	<rule e="way" k="*" v="*" >
@@ -148,9 +42,11 @@
 		</rule>
 	</rule>
 	
-		<!-- =====================================================
-						AREALS AND LINES          
-	====================================================== -->
+  <!-- 
+  =====================================================
+						AERALS AND LINES          
+  ====================================================== 
+  -->
 	<rule e="way" k="*" v="*">
 		
 		<!-- forest --> 
@@ -160,363 +56,24 @@
 				</rule>
 		</rule>
 		
-		<rule cat="base_summer" e="way" k="landuse" v="farm|farmland" closed="yes">
-			<area fill="white" />
-		</rule>
-		
-		<!-- natural -->
-		<rule cat="base_topo" e="way" k="natural" v="*">
-			
-			<rule e="way" k="natural" v="land" closed="yes">
-				<area fill="#f4f3e9" />
-			</rule>
-			
-			<rule e="way" k="natural" v="*" zoom-min="8" closed="yes">
-				<rule e="way" k="natural" v="glacier">
-					<area fill="#50D3E9FF"  />
-					<area src="file:/patterns/glacier.svg" symbol-width="13dp" scale-icon-size="13,1.2"/>
-				</rule>
-			</rule>
-			<rule e="way" k="natural" v="*" zoom-min="12" closed="yes">
-				<rule e="way" k="natural" v="beach">
-					<area fill="#FCF5E0" />
-					<area src="file:/patterns/beach.png"/>
-				</rule>			
-				<rule e="way" k="natural"  v="heath" >
-						<area fill="#F1F2E9" />
-						<area src="file:/patterns/heath.svg"/>
-				</rule>		
-				<rule e="way" k="natural" v="marsh|wetland">
-					<area src="file:/patterns/marsh.png"  scale-icon-size="17,1.15"/>
-				</rule>
-				<rule e="way" k="natural" v="scree|shingle">
-					<area fill="#80dddfe5" />
-					<area src="file:/patterns/beach.png" symbol-width="64dp" scale-icon-size="16,1.15" />
-				</rule>	
-			</rule>			
-			<rule e="way" k="natural" v="*" zoom-min="14">
-				<rule e="way" k="natural" v="cliff" >
-					<line stroke="#80CCA78B" stroke-width="0.2dp" />
-					<lineSymbol src="file:/symbols/db_poi_cliff_way.svg" symbol-color="#755741" align-center="true" repeat="true"  repeat-gap="0dp" symbol-width="12dp"   scale-icon-size="17,1.15" />
-				</rule>
-				<rule e="way" k="natural" v="grassland" closed="yes">
-					<area src="file:/patterns/medow.svg" scale-icon-size="17,1.15" symbol-width="16dp" />
-				</rule>	
-			</rule>			
-			
-			<!-- Natural captions --> 
-			<rule e="way" k="natural" v="heath|marsh|wetland|cliff" zoom-min="16">
-				<caption k="name" font-style="normal" font-family="default" font-size="8dp" scale-font-size="15,1.2" fill="#797979" stroke="#ffffff" stroke-width="2dp" />
-			</rule>
-		</rule>		
-		
-
 		<!-- Industrial and city areals-->
 		<rule e="way" k="landuse|lm_landuse" v="*" closed="yes">
-			
-			<rule e="way" k="*" v="*" zoom-min="11" zoom-max="12" >
-				<rule e="way" k="lm_landuse" v="residential_city">
 					<area fill="#D1D1D1" />
-				</rule>	
-			</rule>
+	  </rule>		
 			
-			<rule e="way" k="*" v="*" zoom-min="13" zoom-max="13" >
-				<rule e="way" k="landuse" v="residential|retail|industrial|brownfield|railway|commercial|construction|greenfield|garages">
-					<area fill="#D1D1D1" />
-				</rule>
-				<rule e="way" k="lm_landuse" v="residential_city|residential_village">
-					<area fill="#D1D1D1" />
-				</rule>	
-			</rule>
-			<!-- SUMMER industrial, residential -->		
-			<rule cat="base_summer" e="way" k="*" v="*" zoom-min="14"  >	
-				<rule e="way" k="landuse" v="farmyard|residential|commercial|garages|construction|greenfield|brownfield">
-					<area fill="#e6dcc1" />
-				</rule>
-				<rule e="way" k="landuse" v="industrial|brownfield|railway">
-					<area fill="#D6D6E1" />					
-				</rule>	
-				<rule e="way" k="landuse" v="quarry"  >
-					<area fill="#D6D6E1"  />	
-					<rule e="way" k="*" v="*"  zoom-min="15">
-						<line stroke="#797979" dy="3dp" stroke-width="1.5dp" stroke-dasharray="0.5,3" stroke-linecap="butt" />
-					</rule>
-				</rule>
-				<rule e="way" k="lm_landuse" v="residential_city|residential_village">
-					<area fill="#e6dcc1" />
-				</rule>	
-			</rule>
-			
-			<!-- CAR residential industrial -->		
-			<rule cat="base_car" e="way" k="*" v="*" zoom-min="14"  zoom-max="16" >					
-				<rule e="way" k="landuse|lm_landuse" v="residential_city|residential_village|residential|brownfield|industrial|brownfield|garages|construction|quarry">
-					<area fill="#dcdcdc" />					
-				</rule>	
-			</rule>
-			
-			<!-- City industrial -->		
-			<rule cat="base_city" e="way" k="*" v="*" zoom-min="14"  >					
-				<rule e="way" k="landuse" v="|brownfield|industrial|brownfield|garages|construction|quarry">
-					<area fill="#D6D6E1" />					
-				</rule>	
-			</rule>
-
-			<!-- winter industrial -->
-			<rule cat="base_winter" e="way" k="*" v="*" zoom-min="14" >	
-				<rule e="way" k="landuse|lm_landuse" v="residential_city|residential_village|residential|commercial|garages">
-					<area fill="#E2E2E2" />
-				</rule>
-				<rule e="way" k="landuse" v="quarry|farmyard|industrial|brownfield|railway|construction|greenfield|brownfield">
-					<area fill="#CECECE" />
-				</rule>	
-			</rule>
-		</rule>
-		
 		<!-- Power areals-->		
-		<rule cat="base_summer" e="way" k="power" v="generator|station|sub_station|substation" zoom-min="13" closed="yes">
+		<rule  e="way" k="power" v="generator|station|sub_station|substation" zoom-min="13" closed="yes">
 			<area fill="#D6D6E1" />
 		</rule>
-		<rule cat="base_winter" e="way" k="power" v="generator|station|sub_station|substation" zoom-min="13" closed="yes">
-			<area fill="#CECECE" />
-		</rule>
 		
-		<!-- parks render after citi areas -->
-		<rule  e="way" k="leisure|landuse" v="park|village_green|recreation_ground" zoom-min="13" closed="yes">
-			<!-- parks City -->
-			<rule cat="base_city" e="way" k="*" v="*" zoom-min="14">
-				<area fill="#80a0ca6c" />
-				<rule e="way" k="*" v="*" zoom-min="16">
-					<caption k="name" dy="15dp" scale-dy-size="17,1.15"  font-style="bold" font-family="sans_serif" font-size="12dp" scale-font-size="17,1.15" fill="#39761a" stroke="#ffffff" stroke-width="2dp" />
-				</rule>	
-			</rule>	
-			<rule cat="base_summer" e="way" k="*" v="*"  >
-				<area fill="#80a0ca6c" />
-				<rule e="way" k="*" v="*" zoom-min="17">
-					<caption k="name" dy="15dp" scale-dy-size="17,1.15"  font-style="bold" font-family="sans_serif" font-size="12dp" scale-font-size="17,1.15" fill="#39761a" stroke="#ffffff" stroke-width="2dp" />
-				</rule>
-			</rule>	
-			<!-- park for WINTER -->
-			<rule cat="base_winter" e="way" k="*" v="*" >
-				<area fill="#80a6bec9"  />
-				<rule e="way" k="*" v="*" zoom-min="17">
-					<caption k="name" font-style="bold" font-size="7dp" scale-font-size="15,1.2" fill="#333333" stroke="#60FFFFFF"  />				
-				</rule>
-			</rule>	
-				
-			<rule cat="base_car" e="way" k="leisure" v="park" zoom-min="14">
-				<area fill="#80a0ca6c" />
-				<rule e="way" k="*" v="*" zoom-min="17">
-					<caption k="name" dy="15dp" scale-dy-size="17,1.15"  font-style="bold" font-family="sans_serif" font-size="12dp" scale-font-size="17,1.15" fill="#39761a" stroke="#ffffff" stroke-width="2dp" />
-				</rule>	
-			</rule>				
-		</rule>	
-
-		
-		<!-- Orchards and meadows, cemetery -->
-		<rule cat="base_topo" e="way" k="landuse" v="*" zoom-min="13">				
 			
-			<rule e="way" k="*" v="*" zoom-min="14" >				
-				<!-- meadow  -->
-				<rule e="way" k="landuse" v="meadow|grass" >
-					<area src="file:/patterns/medow.svg" scale-icon-size="17,1.15" symbol-width="16dp" />
-				</rule>	
-
-				<rule cat="base_summer" e="way" k="landuse" v="cemetery"  >
-					<area fill="#80bdd16c"  stroke="#e4e4e4" stroke-width="0.2dp" />
-					<area src="file:/patterns/graveyard.svg" scale-icon-size="16,1.414" symbol-width="16dp"  />
-					<rule e="way" k="*" v="grave_yard" zoom-min="17" >
-						<caption k="name" dy="15dp" scale-dy-size="17,1.15"  font-style="bold" font-family="sans_serif" font-size="12dp" scale-font-size="17,1.15" fill="#39761a" stroke="#ffffff" stroke-width="2dp" />
-					</rule>
-				</rule>	
-				
-				<rule cat="base_winter" e="way" k="landuse" v="cemetery"  >
-					<area fill="#8096bfbe"  stroke="#e4e4e4" stroke-width="0.2dp" />
-				</rule>	
-			</rule>	
-			
-			<rule e="way" k="*" v="*" zoom-min="13" >
-			<!-- vineyards, orchard --> 
-				<rule e="way" k="landuse" v="vineyard|orchard|hop_garden" closed="yes">
-					<rule cat="base_summer" e="way" k="*" v="*" >
-						<area fill="#80bdd16c" />
-					</rule>
-					<rule cat="base_winter" e="way" k="*" v="*" >
-						<area fill="#8096bfbe" />
-					</rule>
-					
-					<rule e="way" k="*" v="*" zoom-min="15" zoom-max="16">
-						<rule e="way" k="landuse" v="vineyard" >
-							<area src="file:/patterns/vineyard.svg" symbol-width="32dp" />
-						</rule>	
-						<rule e="way" k="landuse" v="orchard" >
-							<area src="file:/patterns/orchard.svg" symbol-width="32dp" />
-						</rule>	
-						<rule e="way" k="landuse" v="hop_garden" >
-							<area src="file:/patterns/hop_garden.svg" symbol-width="32dp" />
-						</rule>	
-					</rule>
-					<rule e="way" k="*" v="*" zoom-min="17">
-						<rule e="way" k="landuse" v="vineyard" >
-							<area src="file:/patterns/vineyard.svg" symbol-width="64dp" />
-						</rule>	
-						<rule e="way" k="landuse" v="orchard" >
-							<area src="file:/patterns/orchard.svg" symbol-width="64dp" />
-						</rule>	
-						<rule e="way" k="landuse" v="hop_garden" >
-							<area src="file:/patterns/hop_garden.svg" symbol-width="64dp" />
-						</rule>	
-					</rule>
-				</rule>	
-			</rule>						
+		<!-- Nature protected areas -->
+		<rule e="way" k="leisure" v="nature_reserve" zoom-min="13">
+		  		<line stroke="#DCDCDC" stroke-width="0.7dp" stroke-dasharray="2,6" stroke-linecap="square" />
 		</rule>
-		<!-- cemetery city -->		
-		<rule cat="base_city" e="way" k="landuse" v="*" zoom-min="14" closed="yes">				
-			<rule e="way" k="landuse" v="cemetery"  >
-				<area fill="#80bdd16c"  stroke="#e4e4e4" stroke-width="0.2dp" />
-				<area src="file:/patterns/graveyard.svg" scale-icon-size="16,1.414" symbol-width="16dp"  />
-				<rule e="way" k="*" v="*" zoom-min="17" >
-					<caption k="name" dy="15dp" scale-dy-size="17,1.15"  font-style="bold" font-family="sans_serif" font-size="12dp" scale-font-size="17,1.15" fill="#39761a" stroke="#ffffff" stroke-width="2dp" />
-				</rule>
-			</rule>	
-		</rule>	
-		<!-- cemetery car -->		
-		<rule cat="base_city" e="way" k="landuse" v="*" zoom-min="14" closed="yes">				
-			<rule e="way" k="landuse" v="cemetery"  >
-				<area fill="#80bdd16c"  stroke="#e4e4e4" stroke-width="0.2dp" />
-				<rule e="way" k="*" v="*" zoom-min="17" >
-					<caption k="name" dy="15dp" scale-dy-size="17,1.15"  font-style="bold" font-family="sans_serif" font-size="12dp" scale-font-size="17,1.15" fill="#39761a" stroke="#ffffff" stroke-width="2dp" />
-				</rule>
-			</rule>	
-		</rule>	
-		
-		<!-- amenity areas -->
-		<rule cat="no_car" e="way" k="amenity" v="*" zoom-min="16" closed="yes">			
-	
-			<rule cat="base_summer" e="way" k="*" v="grave_yard"  >
-				<area fill="#80bdd16c"  stroke="#e4e4e4" stroke-width="0.2dp" />
-				<area src="file:/patterns/graveyard.svg" scale-icon-size="16,1.414" symbol-width="16dp"  />
-				<rule e="way" k="*" v="grave_yard" zoom-min="17" >
-					<caption k="name" dy="15dp" scale-dy-size="17,1.15"  font-style="bold" font-family="sans_serif" font-size="12dp" scale-font-size="17,1.15" fill="#39761a" stroke="#ffffff" stroke-width="2dp" />
-				</rule>
-			</rule>					
-			<rule cat="base_winter" e="way" k="amenity" v="grave_yard"  >
-				<area fill="#8096bfbe"  stroke="#e4e4e4" stroke-width="0.2dp" />
-				<area src="file:/patterns/graveyard.svg" scale-icon-size="16,1.414" symbol-width="16dp"  />
-			</rule>	
 			
-			<rule e="way" k="*" v="kindergarten|school|college|university">
-				<area fill="#DBD1C7"  />
-			</rule>
-			<rule e="any" k="amenity" v="parking" >
-				<area fill="#e7e7e7"  />
-			</rule>
-		</rule>
-		<rule cat="base_car" e="way" k="amenity" v="*" zoom-min="16" closed="yes">			
-			<rule e="any" k="amenity" v="parking" >
-				<area fill="#e7e7e7"  />
-			</rule>
-		</rule>			
-		
-		<!-- sport -->
-		<rule cat="no_car" e="way" k="sport" v="*" zoom-min="15"> <!-- fill sport areas as institute areas like school, etc. -->
-			<area fill="#d6bfa2" />
-		</rule>
-		
-		<!-- leisure -->
-		<rule cat="base_topo" e="way" k="leisure" v="*" zoom-min="13">
-			
-			<!-- Golf, playground summer -->
-			<rule cat="base_summer" e="way" k="leisure" v="*" zoom-min="14" closed="yes">
-				<rule e="way" k="leisure" v="stadium|sports_centre|water_park">
-					<area fill="#d6bfa2" />
-				</rule>	
-				<rule e="way" k="leisure" v="golf_course|common|green" >
-					<area fill="#dbe5b2" />
-				</rule>
-				<rule e="way" k="leisure" v="playground|playing_fields|pitch|dog_park" >
-					<area fill="#cdeca7" stroke="#9ccf5e" stroke-width="0.1dp" />				
-				</rule>
-				<rule e="way" k="leisure" v="track" >
-					<rule e="way" k="area" v="yes|true">
-						<area fill="#cdeca7" stroke="#9ccf5e" stroke-width="0.15dp" />
-					</rule>				
-				</rule>				
-			</rule>
-			
-			<!-- Golf, playground winter -->
-			<rule cat="base_winter" e="way" k="leisure" v="*" zoom-min="14" closed="yes">
-				<rule e="way" k="leisure" v="stadium|sports_centre|water_park">
-					<area fill="#d6bfa2" />
-				</rule>	
-				<rule e="way" k="leisure" v="golf_course|common|green" >
-					<area fill="#c7dcdb" />
-				</rule>
-				<rule e="way" k="leisure" v="playground|playing_fields|pitch|dog_park" >
-					<area fill="#a5e4da" stroke="#8bb7b5" stroke-width="0.15dp" />				
-				</rule>
-				<rule e="way" k="leisure" v="track" >
-					<rule e="way" k="area" v="yes|true">
-						<area fill="#a5e4da" stroke="#8bb7b5" stroke-width="0.15dp" />
-					</rule>				
-				</rule>	
-			</rule>
-			
-			<!-- Nature protected areas -->
-			<rule e="way" k="leisure" v="nature_reserve" zoom-min="13">
-				<line stroke="#6fc18e" stroke-width="0.7dp" stroke-dasharray="2,6" stroke-linecap="square" />
-			</rule>
-			
-			<rule e="way" k="leisure" v="swimming_pool" zoom-min="14">
-				<area fill="#DCDCDC" stroke="#6060ff" stroke-width="0.15dp" />
-			</rule>
-
-			<rule e="way" k="leisure" v="stadium|sports_centre|water_park|golf_course|playing_fields|pitch|" zoom-min="16">
-				<caption k="name" font-style="italic" font-family="serif" font-size="8dp" scale-font-size="17,1.15" fill="#333333" stroke="#ffffff" stroke-width="2.5dp" />
-			</rule>
-		</rule>
-		
-		<rule cat="base_car" e="way" k="leisure" v="*" zoom-min="14">
-			<rule e="way" k="leisure" v="golf_course|common|green" >
-				<area fill="#dbe5b2" />
-			</rule>
-		</rule>
-		
-		
-		<!-- Golf, playground city -->
-		<rule cat="base_city" e="way" k="leisure" v="*" zoom-min="14" closed="yes">
-			<rule e="way" k="leisure" v="stadium|sports_centre|water_park">
-				<area fill="#e1d5b6" />
-			</rule>	
-			<rule e="way" k="leisure" v="golf_course|common|green" >
-				<area fill="#dbe5b2" />
-			</rule>
-			<rule e="way" k="leisure" v="playground|playing_fields|pitch|dog_park" >
-				<area fill="#cdeca7" stroke="#9ccf5e" stroke-width="0.1dp" />				
-			</rule>
-			<rule e="way" k="leisure" v="track" >
-				<rule e="way" k="area" v="yes|true">
-					<area fill="#cdeca7" stroke="#9ccf5e" stroke-width="0.15dp" />
-				</rule>				
-			</rule>				
-		</rule>
-		
-		
-		<!-- tourism areas -->
-		<rule cat="base_topo" e="way" k="tourism" v="*" closed="yes">
-			<rule e="way" k="tourism" v="*" zoom-min="14">
-				<rule e="way" k="tourism" v="camp_site|caravan_site|attraction" >
-					<area fill="#d6bfa2"  />
-				</rule>	
-			</rule>		
-			<rule e="way" k="tourism" v="*" zoom-min="16">
-				<rule e="way" k="tourism" v="picnic_site" >
-					<area fill="#c7f1a3"  />
-				</rule>								
-			</rule>	
-		</rule>	<!-- end of tourism areas -->
-		
 		<!-- Contour lines  -->
-		<rule cat="base_topo" e="way" k="contour_ext" v="*" >
+		<rule e="way" k="contour_ext" v="*" >
 		
 			<!-- contour lines level 13 -->
 			<rule e="way" k="contour_ext" v="*" zoom-min="13" zoom-max="13">
@@ -566,7 +123,7 @@
 				<caption k="name" font-style="bold_italic" font-size="8dp" scale-font-size="17,1.2" fill="#4f9cbf" stroke="#ffffff" stroke-width="2dp"/>
 			</rule>					
 		</rule>
-		<!-- waterways -->
+		<!-- waterways [we can probably delete these rules -->
 		<rule e="way" k="waterway" v="*">
 			<!-- waterway casings -->		
 			<rule e="way" k="waterway" v="canal" zoom-min="10">
@@ -626,7 +183,7 @@
 		</rule>	 <!-- end of water -->	
 		
 		
-		<!-- runways casings and areas TODO terminal based -->
+		<!-- runways casings and areas  -->
 		<rule e="way" k="aeroway" v="*" zoom-min="13">		
 						
 			<rule e="way" k="aeroway" v="runway"  >
@@ -682,18 +239,8 @@
 			</rule>	
 		</rule>
 		
-		<!-- platform cores -->
-		<rule cat="no_car" e="way" k="highway|railway|public_transport" v="platform" zoom-min="15" >
-			<rule e="way" k="*" v="*" closed="yes">
-				<area fill="#C1C1C1" />
-			</rule>
-			<rule e="way" k="*" v="*" closed="no">
-				<line stroke="#C1C1C1" stroke-width="0.2dp" />
-			</rule>
-		</rule>
-		
-		<!-- building for CITY -->
-		<rule cat="base_city" e="way" k="building|historic" v="*" zoom-min="15" >
+		<!-- building -->
+		<rule e="way" k="building|historic" v="*" zoom-min="15" >
 			<area fill="#d9c3c3" stroke-width="0.1dp" />
 			
 			<rule e="way" k="building|amenity" v="commercial|industrial|retail|warehouse" >
@@ -3907,7 +3454,7 @@
 	</rule>	
 
 	<!-- Tourism-->
-	<rule e="any" k="tourism" v="*" zoom-min="15">
+	<rule e="any" k="tourism" v="*" zoom-min="0">
 		<!-- hotels CITY -->
 		<rule cat="accommodation_city"  e="any" k="tourism" v="*" zoom-min="18" >
 			<rule e="any" k="tourism" v="hotel" >
@@ -3929,7 +3476,7 @@
 		</rule>
 		
 		<!-- hotels and alpine huts for topo -->
-		<rule cat="accommodation_topo"  e="any" k="tourism" v="*" zoom-min="15" >
+		<rule cat="accommodation_topo"  e="any" k="tourism" v="*" zoom-min="0" >
 			<rule e="any" k="tourism" v="hotel" zoom-min="17" >
 				<symbol src="file:/symbols/db_poi_hotel_hostel.svg" symbol-color="#af5724" symbol-width="14dp" scale-icon-size="17,1.15" />
 			</rule>
@@ -3945,9 +3492,12 @@
 				</rule>
 			</rule>	
 			<!-- tourism areas -->
-			<rule e="any" k="tourism" v="camp_site|caravan_site" >
-				<symbol src="file:/symbols/db_poi_camp_caravan.svg" symbol-color="#af5724" symbol-width="16dp" scale-icon-size="17,1.15" />				
+			<rule e="any" k="tourism" v="camp_site" >
+				<symbol src="file:/symbols/db_poi_camp_caravan.svg" symbol-color="black" symbol-width="16dp" scale-icon-size="17,1.15" />				
 			</rule>		
+      <rule e="any" k="tourism" v="caravan_site">
+        <symbol src="file:../vol_res/svg/caravan_site.svg" symbol-color="black" symbol-height="16dp" scale-icon-size="17,1.15"/>
+      </rule>
 		</rule>	
 		
 		<!-- musuem, zoo,   for CITY -->
