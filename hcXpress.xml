@@ -99,6 +99,49 @@
       <line stroke="black" stroke-width="2dp" />
     </rule>
   </rule>
+
+  <!-- Elevation -->
+  <rule e="way" k="contour_ext" v="*">
+  <!--   contour lines level 13   -->
+    <rule e="way" k="contour_ext" v="*" zoom-min="13" zoom-max="13">
+      <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
+        <line stroke="gray" stroke-width="0.25dp"/>
+      </rule>
+    </rule>
+  <!--   contour lines level 14  -->
+    <rule e="way" k="contour_ext" v="*" zoom-min="14" zoom-max="14">
+      <rule e="way" k="contour_ext" v="elevation_minor">
+        <line stroke="gray" stroke-width="0.09dp" curve="cubic"/>
+      </rule>
+      <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
+        <line stroke="gray" stroke-width="0.18dp" curve="cubic"/>
+      </rule>
+    </rule>
+  <!--   contour lines level 15  -->
+    <rule e="way" k="contour_ext" v="*" zoom-min="15" zoom-max="16">
+      <rule e="way" k="contour_ext" v="elevation_minor">
+        <line stroke="gray" stroke-width="0.08dp" curve="cubic"/>
+      </rule>
+      <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
+        <line stroke="gray" stroke-width="0.15dp" curve="cubic"/>
+      <rule e="way" k="*" v="*">
+        <pathText k="ele" font-style="bold" font-size="5dp" scale-font-size="15,1.2" fill="#7C583A" stroke="#ffffff" stroke-width="1.5dp" rotate_up="false"/>
+      </rule>
+    </rule>
+  </rule>
+  <!--   contour lines level 17 and above   -->
+    <rule e="way" k="contour_ext" v="*" zoom-min="17">
+      <rule e="way" k="contour_ext" v="elevation_minor">
+        <line stroke="gray" stroke-width="0.05dp" curve="cubic"/>
+      </rule>
+      <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
+        <line stroke="gray" stroke-width="0.10dp" curve="cubic"/>
+        <rule e="way" k="*" v="*">
+          <pathText k="ele" dy="3dp" font-style="bold" font-size="7dp" fill="#7C583A" dx="30" scale-font-size="16,1.2" stroke="#ffffff" stroke-width="2dp" rotate_up="false"/>
+        </rule>
+      </rule>
+    </rule>
+  </rule>
 	<!--  END OF WAYS -->
 	<!--  ===================================================
 						   POIS
