@@ -30,28 +30,39 @@
       ___________________
     
       DONE
-      . make sea color lighter
-      . fix land: fill white/no pattern
-      . remove instructions relative to [un-necessary] categories
+      . removed instructions relative to [un-necessary] categories
+      . commit as it is, write hcXpress.xml, git add; switch files; delete everything below sea and work from there
 
       TODO
-      . validate in its current form (name and GIT)
-      . modify colors (make a list of distinct colors and their matches)
+      . make sea color lighter - probably a single rule. No embed. Not clear what is the impact of nosea - try with black
+      . fix landuse: highways and contours are enough. fill the rest with white
+      . validate in its current form and commit
+      . Fix places (move up?)
+      . test speed.
+      . try persistent campsites/caravan/shelter
+         . test icon size
+         . test zoom levels
+         . make sure that the maps refreshes well
+         . if possible add picnic (probably at higher zoom)
       . make select POIs persistent and high contrast
-             . campsite
-             . caravan
-             . shelter
-             . picnic
-             . toilets
+         . campsite
+         . caravan
+         . shelter
+         . picnic
+         . toilets
+         . water
 
-             . market
-             . convenience
+         . market
+         . convenience
+         . restaurant
+         . hotel/accommodation
 
-             . hotel/accommodation
+      . modify colors (make a list of distinct colors and their matches)
+         . Sea #DCDCDC / landuse #FFFFFF
+         . Roads #383838 of various thickness
+         . City/town labels #383838 
+
       . Make an express version (?)
-             . Sea #DCDCDC / landuse #FFFFFF
-             . Roads #383838 of various thickness
-             . City/town labels #383838 
 
 		  -->
 
@@ -61,12 +72,12 @@
 			<area fill="#DCDCDC"/>
 		</rule>
 		<rule e="way" k="natural" v="nosea">
-			<area fill="#F0F0F0"/>
+			<area fill="white"/>
 		</rule>
 	</rule>
 	<!--  =====================================================
-						AERIALS AND LINES          
-       	======================================================  -->
+						WAYS
+  -->
 	<rule e="way" k="*" v="*">
 		<!--  forest  [change all landuse to white] -->
 		<rule e="way" k="natural|landuse|wood|lm_landuse" v="*" closed="yes">
@@ -2189,6 +2200,18 @@
 						   POIS
 	====================================================  -->
 	<!--  amenity  -->
+  <!--  We need the following icons:
+           . camping
+           . caravan
+           . shelter
+           . picnic
+           . toilets
+
+           . hotel
+
+           . restaurant/cafe
+           . food store/bakery
+   -->  
 	<rule e="any" k="amenity" v="*" zoom-min="14">
 		<rule e="any" k="amenity" v="hospital">
 			<symbol src="file:/symbols/db_poi_hospital.svg" symbol-color="#e0052a" symbol-width="14dp" scale-icon-size="18,1.15"/>
