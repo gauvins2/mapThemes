@@ -65,9 +65,10 @@
       . Make an express version (?)
 
 		  -->
-	<!--  =====================================================
-        BASIC FEATURES - land, sea, water
-  -->
+  <!-- ===================================================== -->
+  <!-- BASIC FEATURES - land, sea, water                     -->
+  <!-- ===================================================== -->
+
 	<!--  Render sea  -->
 	<rule e="way" k="natural" v="sea">
 		<area fill="#DCDCDC"/>
@@ -83,14 +84,21 @@
   <rule e="way" k="landuse|natural" v="reservoir|basin|water" zoom-min="8">
     <area fill="#DCDCDC"/>
   </rule>
-	<!--  =====================================================
-    DEFINE WAYS 
-     . administrative boundaries
-     . contour lines
-     . roads
-     . paths
-     . railways
-  -->
+
+  <!-- ===================================================== -->
+  <!-- DEFINE WAYS - boundaries, elevation, roads/paths, rail-->
+  <!-- ===================================================== -->
+
+  <!-- Administrative boundaries -->
+
+  <rule e="way" k="admin_level" v="*">
+    <rule e="way" k="admin_level" v="4" zoom-max="14">
+      <line stroke="black" stroke-width="1dp" />
+    </rule>
+    <rule e="way" k="admin_level" v="2" zoom-max="16">
+      <line stroke="black" stroke-width="2dp" />
+    </rule>
+  </rule>
 	<!--  END OF WAYS -->
 	<!--  ===================================================
 						   POIS
