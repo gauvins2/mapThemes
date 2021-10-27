@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rendertheme
+	xmlns="http://mapsforge.org/renderTheme"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mapsforge.org/renderTheme https://raw.githubusercontent.com/mapsforge/mapsforge/dev/resources/renderTheme.xsd" version="1" locus-extended="1" fill-sea-areas="0" map-background="#ebeade">
+	<!-- 
+		  gauvins9@gmail.com
+      2021-10-24
+
+      +++++++++++++++++++ 
+      High contrast theme
+      +++++++++++++++++++ 
+
+      Gradient:
+        . #ffffff white
+        . #E8E8E8 
+        . #DCDCDC gainsboro (may not be supported)
+        . #D3D3D3 lightgray (may not be supported)
+        . #C0C0C0 silver
+        . #A9A9A9 darkgray
+        . #808080 gray
+        . #696969 dimgray
+        . #383838
+        . #000000 black
+
+      Based on : LOCUS INTERNAL THEME FOR LOMAPS (https://docs.locusmap.eu/doku.php?id=manual:advanced:map_tools:theming)
+      Release July, 2016
+      Distributed under the Apache License
+      version 2.1.1
+
+      ___________________
+    
+      DONE
+      . removed instructions relative to [un-necessary] categories
+      . commit as it is, write hcXpress.xml, git add; switch files; delete everything below sea and work from there
+
+      TODO
+      . make sea color lighter - probably a single rule. No embed. Not clear what is the impact of nosea - try with black
+      . fix landuse: highways and contours are enough. fill the rest with white
+      . validate in its current form and commit
+      . Fix places (move up?)
+      . test speed.
+      . try persistent campsites/caravan/shelter
+         . test icon size
+         . test zoom levels
+         . make sure that the maps refreshes well
+         . if possible add picnic (probably at higher zoom)
+      . make select POIs persistent and high contrast
+         . campsite
+         . caravan
+         . shelter
+         . picnic
+         . toilets
+         . water
+
+         . market
+         . convenience
+         . restaurant
+         . hotel/accommodation
+
+      . modify colors (make a list of distinct colors and their matches)
+         . Sea #DCDCDC / landuse #FFFFFF
+         . Roads #383838 of various thickness
+         . City/town labels #383838 
+
+      . Make an express version (?)
+
+		  -->
+	<!--  =====================================================
+        BASIC FEATURES - land, sea, water
+  -->
+	<!--  Render sea  -->
+	<rule e="way" k="natural" v="sea">
+		<area fill="#DCDCDC"/>
+	</rule>
+	<rule e="way" k="natural" v="nosea">
+		<area fill="white"/>
+	</rule>
+  <!--   land  -->
+  <rule e="way" k="landuse|wood|lm_landuse" v="*" closed="yes">
+    <area fill="white"/>
+  </rule>
+  <!--   water  -->
+  <rule e="way" k="landuse|natural" v="reservoir|basin|water" zoom-min="8">
+    <area fill="#DCDCDC"/>
+  </rule>
+	<!--  =====================================================
+    DEFINE WAYS 
+     . administrative boundaries
+     . contour lines
+     . roads
+     . paths
+     . railways
+  -->
+	<!--  END OF WAYS -->
+	<!--  ===================================================
+						   POIS
+
+	      Persistent icons:
+           . camping
+           . caravan
+           . shelter
+   -->
+	<!--  ===================================================
+			  PLACE NAMES
+	-->
+</rendertheme>
+
