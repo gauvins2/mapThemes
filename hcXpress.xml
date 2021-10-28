@@ -209,41 +209,56 @@
     </rule>
 
   <!-- ROADS, ROUTES, POWER LINES & STREETS -->
-  <!-- TODO: some small forest roads are not displayed -->  
+  <!-- TODO: some small forest roads (ex: Cochrane) are not displayed -->  
+  <!-- TODO: some paths (ex: Jasper) are not displayed -->  
+  <!-- TODO: review bike paths styling -->  
 
   <!-- Streets (are displayed at zoom-min="16") (first way rendered) -->
       <rule e="way" k="highway" v="residential" zoom-min="16">
-          <line stroke="black" stroke-width="2.20dp" stroke-linecap="butt"/>
-          <line stroke="white" stroke-width="2.05dp" stroke-linecap="butt"/>
+          <line stroke="black" stroke-width="1.50dp" />
+          <line stroke="white" stroke-width="1.10dp" stroke-linecap="butt"/>
       </rule>
   <!-- Roads (are always displayed) -->
-    <rule e="way" k="highway" v="motorway|trunk|primary|secondary|tertiary|unclassified|road|track">
+    <rule e="way" k="highway" v="motorway|trunk|primary|secondary|tertiary|unclassified|road|track|path">
+      <rule e="way" k="highway" v="tertiary">
+          <line stroke="black" stroke-width="1.50dp" />
+          <line stroke="white" stroke-width="1.10dp" stroke-linecap="butt"/>
+      </rule>
+      <rule e="way" k="highway" v="unclassified|road">
+          <line stroke="black" stroke-width="1.50dp" stroke-dasharray="5,5" stroke-linecap="butt"/>
+          <line stroke="white" stroke-width="1.10dp" stroke-linecap="butt"/>
+      </rule>
       <rule e="way" k="highway" v="motorway|trunk|primary">
-          <line stroke="black" stroke-width="3.4dp" curve="cubic" stroke-linecap="butt"/>
-          <line stroke="#E8E8E8" stroke-width="3dp" curve="cubic" stroke-linecap="butt"/>
+          <line stroke="black" stroke-width="4.5dp" curve="cubic" stroke-linecap="butt"/>
+          <line stroke="#808080" stroke-width="3dp" curve="cubic" stroke-linecap="butt"/>
       </rule>
       <rule e="way" k="highway" v="secondary">
-          <line stroke="black" stroke-width="1.4dp" curve="cubic" stroke-linecap="butt"/>
-          <line stroke="#E8E8E8" stroke-width="1dp" curve="cubic" stroke-linecap="butt"/>
-      </rule>
-      <rule e="way" k="highway" v="tertiary|unclassified|road">
-          <line stroke="black" stroke-width="0.5dp" curve="cubic"/>
+          <line stroke="black" stroke-width="3dp" curve="cubic" stroke-linecap="butt"/>
+          <line stroke="#808080" stroke-width="2dp" curve="cubic" stroke-linecap="butt"/>
       </rule>
       <rule e="way" k="highway" v="track">
-          <line stroke="black" stroke-width="1dp" stroke-dasharray="10,10" curve="cubic"/>
+          <line stroke="black" stroke-width="1dp" stroke-dasharray="10,10" curve="cubic" stroke-linecap="butt"/>
+      </rule>
+      <rule e="way" k="highway" v="path" >
+          <line stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
       </rule>
     </rule> 
-
+  <!-- Footpaths (display at large scale) -->
+    <rule e="way" k="highway" v="footway" zoom-min="16">
+        <line stroke="black" stroke-width="1" stroke-dasharray="1,5"/>
+    </rule>
   <!-- Routes -->
     <rule e="way" k="cycleway|route" v="*">
       <rule e="way" k="cycleway" v="*">
-          <line stroke="silver" stroke-width="1.5dp" curve="cubic"/>
+          <line stroke="black" stroke-width="2dp" dy="2.5p"  curve="cubic"/>
+          <line stroke="white" stroke-width="1.5dp" dy="2.5p" stroke-dasharray="5,10" curve="cubic"/>
       </rule>
       <rule e="way" k="route" v="bicycle">
-          <line stroke="silver" stroke-width="1.5dp" curve="cubic"/>
+          <line stroke="black" stroke-width="2dp" dy="2.5p"  curve="cubic"/>
+          <line stroke="white" stroke-width="1.5dp" dy="2.5p" stroke-dasharray="5,10" curve="cubic"/>
       </rule>
-      <rule e="way" k="route" v="hiking|foot">
-          <line stroke="black" stroke-width="1dp" stroke-dasharray="1,10"/>
+      <rule e="way" k="route" v="hiking|foot|mtb|ski|piste">
+          <line stroke="black" stroke-width="1dp" stroke-dasharray="1,5"/>
       </rule>
     </rule>
 
@@ -253,15 +268,25 @@
     </rule>
 
   <!-- Road/street names -->
-    <rule e="way" k="highway" v="pedestrian|service|residential|living_street|construction|road|ford|unclassified|tertiary_link|secondary_link|primary_link|trunk_link|motorway_link|tertiary|secondary|primary|trunk|motorway" zoom-min="17">
+    <rule e="way" k="highway" v="pedestrian|service|residential|living_street|construction|road|ford|unclassified|tertiary_link|secondary_link|primary_link|trunk_link|motorway_link|tertiary" zoom-min="17">
       <rule e="way" k="*" v="*" zoom-max="18">
-        <pathText k="name" font-style="bold" font-size="6dp" scale-font-size="16,1.15" fill="#000000" stroke="#C0FFFFFF" stroke-width="2dp" dx="6dp" dy="2.5dp"/>
+        <pathText k="name" font-style="bold" font-size="8dp" scale-font-size="16,1.15" fill="#000000" stroke="#C0FFFFFF" stroke-width="2dp" dx="6dp" dy="2.5dp"/>
       </rule>
       <rule e="way" k="*" v="*" zoom-min="19" zoom-max="20">
-        <pathText k="name" font-style="bold" font-size="8dp" scale-font-size="16,1.15" fill="#000000" stroke="#A0FFFFFF" stroke-width="2dp" dx="12dp" dy="4.2dp"/>
+        <pathText k="name" font-style="bold" font-size="10dp" scale-font-size="16,1.15" fill="#000000" stroke="#A0FFFFFF" stroke-width="2dp" dx="12dp" dy="4.2dp"/>
       </rule>
       <rule e="way" k="*" v="*" zoom-min="21">
-        <pathText k="name" font-style="bold" font-size="9dp" scale-font-size="16,1.15" fill="#000000" stroke="#80FFFFFF" stroke-width="2dp" dx="18dp" dy="6.5dp"/>
+        <pathText k="name" font-style="bold" font-size="12dp" scale-font-size="16,1.15" fill="#000000" stroke="#80FFFFFF" stroke-width="2dp" dx="18dp" dy="6.5dp"/>
+      </rule>
+    </rule>
+    <rule e="way" k="highway" v="primary|trunk|motorway" zoom-min="17">
+      <rule e="way" k="*" v="*" >
+        <pathText k="name" font-style="bold" font-size="16dp" scale-font-size="16,1.15" fill="white" stroke="black" stroke-width="2dp" dx="4dp" dy="6dp"/>
+      </rule>
+    </rule>
+    <rule e="way" k="highway" v="secondary" zoom-min="17">
+      <rule e="way" k="*" v="*" >
+        <pathText k="name" font-style="bold" font-size="12dp" scale-font-size="16,1.15" fill="white" stroke="black" stroke-width="2dp" dx="4dp" dy="6dp"/>
       </rule>
     </rule>
 
@@ -290,12 +315,49 @@
     </rule>
 
   <!-- POIs -->
+  <!-- TODO: display poi name for some (eg: restaurant) -->  
     <!-- Persistent icons: campsites/caravan/shelter -->
       <rule e="any" k="tourism" v="camp_site">
-        <symbol src="file:/symbols/tent.svg"  symbol-width="20dp" scale-icon-size="21,1.50"/>
+        <symbol src="file:/symbols/tent.svg" symbol-height="16dp" scale-icon-size="16,0.25"/>
       </rule>
       <rule e="any" k="tourism" v="caravan_site">
-        <symbol src="file:/symbols/caravan.svg"  symbol-width="20dp" scale-icon-size="21,1.50"/>
+        <symbol src="file:/symbols/caravan.svg"  symbol-width="16dp" scale-icon-size="16,1.50"/>
+      </rule>
+      <rule e="any" k="amenity" v="shelter">
+        <symbol src="file:/symbols/shelter.svg"  symbol-width="16dp" scale-icon-size="16,1.50"/>
+      </rule>
+    <!-- Other POIs at zoom 16 or more -->
+      <rule e="any" k="tourism|amenity|shop|" v="*" zoom-min="17">
+        <rule e="any" k="*" v="cafe">
+          <symbol src="file:/symbols/cafe.svg" symbol-width="16dp" />
+        </rule>
+        <rule e="any" k="*" v="convenience">
+          <symbol src="file:/symbols/convenience.svg" symbol-width="16dp" />
+        </rule>
+        <rule e="any" k="*" v="drinking_water">
+          <symbol src="file:/symbols/drinking_water.svg" symbol-width="16dp" />
+        </rule>
+        <rule e="any" k="*" v="fuel">
+          <symbol src="file:/symbols/fuel.svg" symbol-width="16dp" />
+        </rule>
+        <rule e="any" k="*" v="hotel">
+          <symbol src="file:/symbols/hotel.svg" symbol-width="16dp" />
+        </rule>
+        <rule e="any" k="*" v="laundry">
+          <symbol src="file:/symbols/laundry.svg" symbol-width="16dp" />
+        </rule>
+        <rule e="any" k="*" v="picnic_site|picnic_table">
+          <symbol src="file:/symbols/picnic.svg" symbol-width="16dp" />
+        </rule>
+        <rule e="any" k="*" v="supermarket">
+          <symbol src="file:/symbols/supermarket.svg" symbol-width="16dp" />
+        </rule>
+        <rule e="any" k="*" v="restaurant">
+          <symbol src="file:/symbols/restaurant.svg" symbol-width="16dp" />
+        </rule>
+        <rule e="any" k="*" v="toilets">
+          <symbol src="file:/symbols/toilets.svg" symbol-width="16dp" />
+        </rule>
       </rule>
 </rendertheme>
 
