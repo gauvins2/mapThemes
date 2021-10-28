@@ -10,11 +10,11 @@
       High contrast theme
       +++++++++++++++++++ 
 
-      Gradient:
+      Color gradient:
         . #ffffff white
         . #E8E8E8 
-        . #DCDCDC gainsboro (may not be supported)
-        . #D3D3D3 lightgray (may not be supported)
+        . #DCDCDC gainsboro (color name is not recognized)
+        . #D3D3D3 lightgray 
         . #C0C0C0 silver
         . #A9A9A9 darkgray
         . #808080 gray
@@ -32,13 +32,13 @@
       DONE
       . removed instructions relative to [un-necessary] categories
       . commit as it is, write hcXpress.xml, git add; switch files; delete everything below sea and work from there
-
-      TODO
       . make sea color lighter - probably a single rule. No embed. Not clear what is the impact of nosea - try with black
       . fix landuse: highways and contours are enough. fill the rest with white
       . validate in its current form and commit
       . Fix places (move up?)
-      . test speed.
+
+      TODO
+      . Roads should be two parallel lines and include label at large scale, tracks single line 
       . try persistent campsites/caravan/shelter
          . test icon size
          . test zoom levels
@@ -69,182 +69,233 @@
   <!-- BASIC FEATURES - land, sea, water                     -->
   <!-- ===================================================== -->
 
-	<!--  Render sea  -->
-	<rule e="way" k="natural" v="sea">
-		<area fill="#DCDCDC"/>
-	</rule>
-	<rule e="way" k="natural" v="nosea">
-		<area fill="white"/>
-	</rule>
-  <!--   land  -->
-  <rule e="way" k="landuse|wood|lm_landuse" v="*" closed="yes">
-    <area fill="white"/>
-  </rule>
-  <!--   water  -->
-  <rule e="way" k="landuse|natural" v="reservoir|basin|water" zoom-min="8">
-    <area fill="#DCDCDC"/>
-  </rule>
-
+	<!--  GLOBE SURFACE -->
+    <rule e="way" k="natural" v="sea">
+      <area fill="#DCDCDC"/>
+    </rule>
+    <rule e="way" k="natural" v="nosea">
+      <area fill="white"/>
+    </rule>
+    <!--   land  -->
+    <rule e="way" k="landuse|wood|lm_landuse" v="*" closed="yes">
+      <area fill="white"/>
+    </rule>
+    <!--   water  -->
+    <rule e="way" k="landuse|natural" v="reservoir|basin|water" zoom-min="8">
+      <area fill="#DCDCDC"/>
+    </rule>
   <!-- ===================================================== -->
   <!-- DEFINE WAYS - boundaries, elevation, roads/paths, rail-->
   <!-- ===================================================== -->
 
   <!-- ADMINISTRATIVE BOUNDARIES -->
-
-  <rule e="way" k="admin_level" v="*">
-    <rule e="way" k="admin_level" v="4" zoom-max="14">
-      <line stroke="black" stroke-width="1dp" />
+    <rule e="way" k="admin_level" v="*">
+      <rule e="way" k="admin_level" v="4" zoom-max="14">
+        <line stroke="black" stroke-width="1dp" />
+      </rule>
+      <rule e="way" k="admin_level" v="2" zoom-max="16">
+        <line stroke="black" stroke-width="2dp" />
+      </rule>
     </rule>
-    <rule e="way" k="admin_level" v="2" zoom-max="16">
-      <line stroke="black" stroke-width="2dp" />
-    </rule>
-  </rule>
 
   <!-- PLACE NAMES -->
+    <rule e="any" k="place" v="*">
+      <rule e="any" k="place" v="town" zoom-min="10" zoom-max="10">
+        <rule e="any" k="*" v="*" zoom-min="10" zoom-max="10">
+          <circle r="3dp" fill="white" stroke="#9B9B9B" stroke-width="1dp"/>
+          <circle r="1.1dp" stroke="#9B9B9B" stroke-width="1dp"/>
+        </rule>
+        <rule e="any" k="*" v="*" zoom-min="11" zoom-max="11">
+          <circle r="4dp" fill="white" stroke="#9B9B9B" stroke-width="1dp"/>
+          <circle r="1.6dp" stroke="#9B9B9B" stroke-width="1dp"/>
+        </rule>
+      </rule>
+      <rule e="any" k="place" v="city" zoom-min="9" zoom-max="11">
+        <rule e="any" k="*" v="*" zoom-min="6" zoom-max="9">
+          <circle r="2dp" fill="#D3D3D3" stroke="darkGray" stroke-width="1"/>
+        </rule>
+        <rule e="any" k="*" v="*" zoom-min="10" zoom-max="10">
+          <circle r="4dp" fill="white" stroke="darkGray" stroke-width="1dp"/>
+          <circle r="1.8dp" fill="darkGray"/>
+        </rule>
+      </rule>
+      <rule e="any" k="place" v="locality" zoom-min="16" country="*|!ES">
+        <caption k="name" font-size="12dp" scale-font-size="17,1.2" fill="#000000" stroke="#ffffff" stroke-width="2.5dp"/>
+      </rule>
+      <rule e="any" k="place" v="hamlet" zoom-min="13" zoom-max="17">
+        <rule e="any" k="*" v="*" zoom-min="13" zoom-max="13">
+          <caption k="name" font-family="default" font-size="10dp" scale-font-size="13,1.2" fill="#000000" stroke="#ffffff" stroke-width="2dp"/>
+        </rule>
+        <rule e="any" k="*" v="*" zoom-min="14" zoom-max="17">
+          <caption k="name" font-family="default" font-style="bold" font-size="10dp" scale-font-size="13,1.2" fill="#000000" stroke="#ffffff" stroke-width="2.5dp"/>
+        </rule>
+      </rule>
+      <rule e="any" k="place" v="village" zoom-min="12" zoom-max="17">
+        <rule e="any" k="*" v="*" zoom-min="11" zoom-max="12">
+          <caption k="name" font-family="default" font-size="9dp" scale-font-size="11,1.2" fill="#000000" stroke="#ffffff" stroke-width="2dp"/>
+        </rule>
+        <rule e="any" k="*" v="*" zoom-min="13" zoom-max="17">
+          <caption k="name" font-family="default" font-style="bold" font-size="12dp" scale-font-size="13,1.2" fill="#000000" stroke="#ffffff" stroke-width="2.5dp"/>
+        </rule>
+      </rule>
+      <rule e="any" k="place" v="suburb" zoom-min="14" zoom-max="17">
+        <caption k="name" upper-case="true" font-size="12dp" scale-font-size="14,1.2" fill="#343434" stroke="#f8f3f3" stroke-width="2dp"/>
+      </rule>
+      <rule e="any" k="place" v="town" zoom-min="9" zoom-max="15">
+        <rule e="any" k="*" v="*" zoom-min="9" zoom-max="11">
+          <caption k="name" dy="12dp" scale-dy-size="9,1.2" font-family="sans_serif" font-style="bold" font-size="11dp" scale-font-size="10,1.2" fill="#000000" stroke="#ffffff" stroke-width="2.8dp"/>
+        </rule>
+        <rule e="any" k="*" v="*" zoom-min="12" zoom-max="15">
+          <caption k="name" font-family="sans_serif" font-style="bold" font-size="13dp" scale-font-size="12,1.2" fill="#000000" stroke="#ffffff" stroke-width="3dp"/>
+        </rule>
+      </rule>
+      <rule e="any" k="place" v="city" zoom-max="13">
+        <rule e="any" k="place" v="city" zoom-max="10">
+          <caption k="name" dy="15dp" scale-dy-size="9,1.15" upper-case="true" font-family="sans_serif" font-style="bold" font-size="9dp" scale-font-size="6,1.15" fill="#000000" stroke="#ffffff" stroke-width="3dp"/>
+        </rule>
+        <rule e="any" k="place" v="city" zoom-min="11" zoom-max="14">
+          <caption k="name" dy="15dp" scale-dy-size="11,1.15" font-family="sans_serif" font-style="bold" font-size="15dp" scale-font-size="11,1.15" fill="#000000" stroke="#ffffff" stroke-width="3dp"/>
+        </rule>
+      </rule>
+      <rule e="any" k="place" v="island" zoom-min="9" zoom-max="15">
+        <caption k="name" font-style="bold" font-size="12" scale-font-size="9,1.2" fill="#000000" stroke="#ffffff" stroke-width="3.0"/>
+      </rule>
+      <rule e="any" k="place" v="country" zoom-max="6">
+        <caption k="name" upper-case="true" font-style="bold" font-size="25" fill="#000000" stroke="#ffffff" stroke-width="2.0"/>
+      </rule>
+    </rule>
 
-  <rule e="any" k="place" v="*">
-    <rule e="any" k="place" v="town" zoom-min="10" zoom-max="10">
-      <rule e="any" k="*" v="*" zoom-min="10" zoom-max="10">
-        <circle r="3dp" fill="white" stroke="#9B9B9B" stroke-width="1dp"/>
-        <circle r="1.1dp" stroke="#9B9B9B" stroke-width="1dp"/>
+    <!-- ELEVATION -->
+    <rule e="way" k="contour_ext" v="*">
+      <!--   contour lines level 13   -->
+      <rule e="way" k="contour_ext" v="*" zoom-min="13" zoom-max="13">
+        <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
+          <line stroke="gray" stroke-width="0.25dp"/>
+        </rule>
       </rule>
-      <rule e="any" k="*" v="*" zoom-min="11" zoom-max="11">
-        <circle r="4dp" fill="white" stroke="#9B9B9B" stroke-width="1dp"/>
-        <circle r="1.6dp" stroke="#9B9B9B" stroke-width="1dp"/>
+      <!--   contour lines level 14  -->
+      <rule e="way" k="contour_ext" v="*" zoom-min="14" zoom-max="14">
+        <rule e="way" k="contour_ext" v="elevation_minor">
+          <line stroke="gray" stroke-width="0.09dp" curve="cubic"/>
+        </rule>
+        <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
+          <line stroke="gray" stroke-width="0.18dp" curve="cubic"/>
+        </rule>
       </rule>
-    </rule>
-    <rule e="any" k="place" v="city" zoom-min="9" zoom-max="11">
-      <rule e="any" k="*" v="*" zoom-min="6" zoom-max="9">
-        <circle r="2dp" fill="#D3D3D3" stroke="darkGray" stroke-width="1"/>
+      <!--   contour lines level 15  -->
+      <rule e="way" k="contour_ext" v="*" zoom-min="15" zoom-max="16">
+        <rule e="way" k="contour_ext" v="elevation_minor">
+          <line stroke="gray" stroke-width="0.08dp" curve="cubic"/>
+        </rule>
+        <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
+          <line stroke="gray" stroke-width="0.15dp" curve="cubic"/>
+          <rule e="way" k="*" v="*">
+            <pathText k="ele" font-style="bold" font-size="5dp" scale-font-size="15,1.2" fill="#7C583A" stroke="#ffffff" stroke-width="1.5dp" rotate_up="false"/>
+          </rule>
+        </rule>
       </rule>
-      <rule e="any" k="*" v="*" zoom-min="10" zoom-max="10">
-        <circle r="4dp" fill="white" stroke="darkGray" stroke-width="1dp"/>
-        <circle r="1.8dp" fill="darkGray"/>
-      </rule>
-    </rule>
-    <rule e="any" k="place" v="locality" zoom-min="16" country="*|!ES">
-      <caption k="name" font-size="12dp" scale-font-size="17,1.2" fill="#000000" stroke="#ffffff" stroke-width="2.5dp"/>
-    </rule>
-    <rule e="any" k="place" v="hamlet" zoom-min="13" zoom-max="17">
-      <rule e="any" k="*" v="*" zoom-min="13" zoom-max="13">
-        <caption k="name" font-family="default" font-size="10dp" scale-font-size="13,1.2" fill="#000000" stroke="#ffffff" stroke-width="2dp"/>
-      </rule>
-      <rule e="any" k="*" v="*" zoom-min="14" zoom-max="17">
-        <caption k="name" font-family="default" font-style="bold" font-size="10dp" scale-font-size="13,1.2" fill="#000000" stroke="#ffffff" stroke-width="2.5dp"/>
-      </rule>
-    </rule>
-    <rule e="any" k="place" v="village" zoom-min="12" zoom-max="17">
-      <rule e="any" k="*" v="*" zoom-min="11" zoom-max="12">
-        <caption k="name" font-family="default" font-size="9dp" scale-font-size="11,1.2" fill="#000000" stroke="#ffffff" stroke-width="2dp"/>
-      </rule>
-      <rule e="any" k="*" v="*" zoom-min="13" zoom-max="17">
-        <caption k="name" font-family="default" font-style="bold" font-size="12dp" scale-font-size="13,1.2" fill="#000000" stroke="#ffffff" stroke-width="2.5dp"/>
-      </rule>
-    </rule>
-    <rule e="any" k="place" v="suburb" zoom-min="14" zoom-max="17">
-      <caption k="name" upper-case="true" font-size="12dp" scale-font-size="14,1.2" fill="#343434" stroke="#f8f3f3" stroke-width="2dp"/>
-    </rule>
-    <rule e="any" k="place" v="town" zoom-min="9" zoom-max="15">
-      <rule e="any" k="*" v="*" zoom-min="9" zoom-max="11">
-        <caption k="name" dy="12dp" scale-dy-size="9,1.2" font-family="sans_serif" font-style="bold" font-size="11dp" scale-font-size="10,1.2" fill="#000000" stroke="#ffffff" stroke-width="2.8dp"/>
-      </rule>
-      <rule e="any" k="*" v="*" zoom-min="12" zoom-max="15">
-        <caption k="name" font-family="sans_serif" font-style="bold" font-size="13dp" scale-font-size="12,1.2" fill="#000000" stroke="#ffffff" stroke-width="3dp"/>
-      </rule>
-    </rule>
-    <rule e="any" k="place" v="city" zoom-max="13">
-      <rule e="any" k="place" v="city" zoom-max="10">
-        <caption k="name" dy="15dp" scale-dy-size="9,1.15" upper-case="true" font-family="sans_serif" font-style="bold" font-size="9dp" scale-font-size="6,1.15" fill="#000000" stroke="#ffffff" stroke-width="3dp"/>
-      </rule>
-      <rule e="any" k="place" v="city" zoom-min="11" zoom-max="14">
-        <caption k="name" dy="15dp" scale-dy-size="11,1.15" font-family="sans_serif" font-style="bold" font-size="15dp" scale-font-size="11,1.15" fill="#000000" stroke="#ffffff" stroke-width="3dp"/>
-      </rule>
-    </rule>
-    <rule e="any" k="place" v="island" zoom-min="9" zoom-max="15">
-      <caption k="name" font-style="bold" font-size="12" scale-font-size="9,1.2" fill="#000000" stroke="#ffffff" stroke-width="3.0"/>
-    </rule>
-    <rule e="any" k="place" v="country" zoom-max="6">
-      <caption k="name" upper-case="true" font-style="bold" font-size="25" fill="#000000" stroke="#ffffff" stroke-width="2.0"/>
-    </rule>
-  </rule>
-
-  <!-- ELEVATION -->
-  <rule e="way" k="contour_ext" v="*">
-    <!--   contour lines level 13   -->
-    <rule e="way" k="contour_ext" v="*" zoom-min="13" zoom-max="13">
-      <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
-        <line stroke="gray" stroke-width="0.25dp"/>
-      </rule>
-    </rule>
-    <!--   contour lines level 14  -->
-    <rule e="way" k="contour_ext" v="*" zoom-min="14" zoom-max="14">
-      <rule e="way" k="contour_ext" v="elevation_minor">
-        <line stroke="gray" stroke-width="0.09dp" curve="cubic"/>
-      </rule>
-      <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
-        <line stroke="gray" stroke-width="0.18dp" curve="cubic"/>
-      </rule>
-    </rule>
-    <!--   contour lines level 15  -->
-    <rule e="way" k="contour_ext" v="*" zoom-min="15" zoom-max="16">
-      <rule e="way" k="contour_ext" v="elevation_minor">
-        <line stroke="gray" stroke-width="0.08dp" curve="cubic"/>
-      </rule>
-      <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
-        <line stroke="gray" stroke-width="0.15dp" curve="cubic"/>
-        <rule e="way" k="*" v="*">
-          <pathText k="ele" font-style="bold" font-size="5dp" scale-font-size="15,1.2" fill="#7C583A" stroke="#ffffff" stroke-width="1.5dp" rotate_up="false"/>
+      <!--   contour lines level 17 and above   -->
+      <rule e="way" k="contour_ext" v="*" zoom-min="17">
+        <rule e="way" k="contour_ext" v="elevation_minor">
+          <line stroke="gray" stroke-width="0.05dp" curve="cubic"/>
+        </rule>
+        <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
+          <line stroke="gray" stroke-width="0.10dp" curve="cubic"/>
+          <rule e="way" k="*" v="*">
+            <pathText k="ele" dy="3dp" font-style="bold" font-size="7dp" fill="#7C583A" dx="30" scale-font-size="16,1.2" stroke="#ffffff" stroke-width="2dp" rotate_up="false"/>
+          </rule>
         </rule>
       </rule>
     </rule>
-    <!--   contour lines level 17 and above   -->
-    <rule e="way" k="contour_ext" v="*" zoom-min="17">
-      <rule e="way" k="contour_ext" v="elevation_minor">
-        <line stroke="gray" stroke-width="0.05dp" curve="cubic"/>
-      </rule>
-      <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
-        <line stroke="gray" stroke-width="0.10dp" curve="cubic"/>
-        <rule e="way" k="*" v="*">
-          <pathText k="ele" dy="3dp" font-style="bold" font-size="7dp" fill="#7C583A" dx="30" scale-font-size="16,1.2" stroke="#ffffff" stroke-width="2dp" rotate_up="false"/>
-        </rule>
-      </rule>
-    </rule>
-  </rule>
 
-  <!-- ROADS, ROUTES & STREETS -->
+  <!-- ROADS, ROUTES, POWER LINES & STREETS -->
+  <!-- TODO: some small forest roads are not displayed -->  
 
-  <!-- Roads -->
-  <rule e="way" k="highway" v="motorway|trunk|primary|secondary|tertiary|unclassified|road">
-    <rule e="way" k="highway" v="motorway|trunk|primary">
-        <line stroke="black" stroke-width="2dp" curve="cubic"/>
-    </rule>
-    <rule e="way" k="highway" v="secondary">
-      <line stroke="black" stroke-width="1dp" curve="cubic"/>
-    </rule>
-    <rule e="way" k="highway" v="tertiary|unclassified|road">
-        <line stroke="black" stroke-width="0.5dp" curve="cubic"/>
-    </rule>
-  </rule>
+  <!-- Streets (are displayed at zoom-min="16") (first way rendered) -->
+      <rule e="way" k="highway" v="residential" zoom-min="16">
+          <line stroke="black" stroke-width="2.20dp" stroke-linecap="butt"/>
+          <line stroke="white" stroke-width="2.05dp" stroke-linecap="butt"/>
+      </rule>
+  <!-- Roads (are always displayed) -->
+    <rule e="way" k="highway" v="motorway|trunk|primary|secondary|tertiary|unclassified|road|track">
+      <rule e="way" k="highway" v="motorway|trunk|primary">
+          <line stroke="black" stroke-width="3.4dp" curve="cubic" stroke-linecap="butt"/>
+          <line stroke="#E8E8E8" stroke-width="3dp" curve="cubic" stroke-linecap="butt"/>
+      </rule>
+      <rule e="way" k="highway" v="secondary">
+          <line stroke="black" stroke-width="1.4dp" curve="cubic" stroke-linecap="butt"/>
+          <line stroke="#E8E8E8" stroke-width="1dp" curve="cubic" stroke-linecap="butt"/>
+      </rule>
+      <rule e="way" k="highway" v="tertiary|unclassified|road">
+          <line stroke="black" stroke-width="0.5dp" curve="cubic"/>
+      </rule>
+      <rule e="way" k="highway" v="track">
+          <line stroke="black" stroke-width="1dp" stroke-dasharray="10,10" curve="cubic"/>
+      </rule>
+    </rule> 
 
   <!-- Routes -->
-  <rule e="way" k="cycleway|route" v="*">
-    <rule e="way" k="cycleway" v="*">
-        <line stroke="silver" stroke-width="5dp" curve="cubic"/>
+    <rule e="way" k="cycleway|route" v="*">
+      <rule e="way" k="cycleway" v="*">
+          <line stroke="silver" stroke-width="1.5dp" curve="cubic"/>
+      </rule>
+      <rule e="way" k="route" v="bicycle">
+          <line stroke="silver" stroke-width="1.5dp" curve="cubic"/>
+      </rule>
+      <rule e="way" k="route" v="hiking|foot">
+          <line stroke="black" stroke-width="1dp" stroke-dasharray="1,10"/>
+      </rule>
     </rule>
 
-  </rule>
+  <!-- Power lines -->
+    <rule e="way" k="power" v="line" zoom-min="14">
+      <line stroke="#707070" stroke-width="0.5dp" stroke-dasharray="10,3,1,3"/>
+    </rule>
 
-	<!--  END OF WAYS -->
-	<!--  ===================================================
-						   POIS
+  <!-- Road/street names -->
+    <rule e="way" k="highway" v="pedestrian|service|residential|living_street|construction|road|ford|unclassified|tertiary_link|secondary_link|primary_link|trunk_link|motorway_link|tertiary|secondary|primary|trunk|motorway" zoom-min="17">
+      <rule e="way" k="*" v="*" zoom-max="18">
+        <pathText k="name" font-style="bold" font-size="6dp" scale-font-size="16,1.15" fill="#000000" stroke="#C0FFFFFF" stroke-width="2dp" dx="6dp" dy="2.5dp"/>
+      </rule>
+      <rule e="way" k="*" v="*" zoom-min="19" zoom-max="20">
+        <pathText k="name" font-style="bold" font-size="8dp" scale-font-size="16,1.15" fill="#000000" stroke="#A0FFFFFF" stroke-width="2dp" dx="12dp" dy="4.2dp"/>
+      </rule>
+      <rule e="way" k="*" v="*" zoom-min="21">
+        <pathText k="name" font-style="bold" font-size="9dp" scale-font-size="16,1.15" fill="#000000" stroke="#80FFFFFF" stroke-width="2dp" dx="18dp" dy="6.5dp"/>
+      </rule>
+    </rule>
 
-	      Persistent icons:
-           . camping
-           . caravan
-           . shelter
-   -->
-	<!--  ===================================================
-			  PLACE NAMES
-	-->
+    <rule cat="tracks" e="way" k="highway" v="track|byway" zoom-min="17">
+      <rule e="way" k="*" v="*" zoom-max="18">
+        <pathText k="name" font-style="bold" font-size="6dp" scale-font-size="16,1.15" fill="#000000" stroke="#C0FFFFFF" stroke-width="2dp" dx="6dp" dy="2.5dp"/>
+      </rule>
+      <rule e="way" k="*" v="*" zoom-min="19" zoom-max="20">
+        <pathText k="name" font-style="bold" font-size="8dp" scale-font-size="16,1.15" fill="#000000" stroke="#A0FFFFFF" stroke-width="2dp" dx="12dp" dy="4.2dp"/>
+      </rule>
+      <rule e="way" k="*" v="*" zoom-min="21">
+        <pathText k="name" font-style="bold" font-size="9dp" scale-font-size="16,1.15" fill="#000000" stroke="#80FFFFFF" stroke-width="2dp" dx="18dp" dy="6.5dp"/>
+      </rule>
+    </rule>
+
+    <rule cat="paths" e="way" k="highway" v="footway|path|bridleway|cycleway|steps" zoom-min="17">
+      <rule e="way" k="*" v="*" zoom-max="18">
+        <pathText k="name" font-style="normal" font-size="6dp" scale-font-size="16,1.15" fill="#000000" stroke="#C0FFFFFF" stroke-width="4dp" dx="6dp" dy="2.5dp"/>
+      </rule>
+      <rule e="way" k="*" v="*" zoom-min="19" zoom-max="20">
+        <pathText k="name" font-style="normal" font-size="8dp" scale-font-size="16,1.15" fill="#000000" stroke="#A0FFFFFF" stroke-width="4dp" dx="12dp" dy="4.2dp"/>
+      </rule>
+      <rule e="way" k="*" v="*" zoom-min="21">
+        <pathText k="name" font-style="normal" font-size="9dp" scale-font-size="16,1.15" fill="#000000" stroke="#80FFFFFF" stroke-width="4dp" dx="18dp" dy="6.5dp"/>
+      </rule>
+    </rule>
+
+  <!-- POIs -->
+    <!-- Persistent icons: campsites/caravan/shelter -->
+      <rule e="any" k="tourism" v="camp_site">
+        <symbol src="file:/symbols/tent.svg"  symbol-width="20dp" scale-icon-size="21,1.50"/>
+      </rule>
+      <rule e="any" k="tourism" v="caravan_site">
+        <symbol src="file:/symbols/caravan.svg"  symbol-width="20dp" scale-icon-size="21,1.50"/>
+      </rule>
 </rendertheme>
 
