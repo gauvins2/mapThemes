@@ -1,4 +1,4 @@
-hcLayers is a minimalist, high contrast theme. It renders maps in black and white and features layers can be toggled on/off for additional clarity. This theme is compatible with LoMaps (Locus pro / Android). There are few rules (89 vs more than 1300 for the default theme) and the theme is profusely commented such that it should be fairly easy to further customize. 
+hcLayers is a minimalist, high contrast theme. It renders maps in black and white and features layers can be toggled on/off for additional clarity. This theme is compatible with LoMaps (Locus pro / Android). There are few rules (< 89 vs > 1300 for the default theme) and the theme is commented such that it should be fairly easy to further customize. 
 
 Installation:
 

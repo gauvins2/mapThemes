@@ -5,7 +5,7 @@
 	<!-- 
 		  gauvins9@gmail.com
       2021-10-28
-      v 0.1
+      v0.5
       ++++++++++++++++++++++++++++++++++++++++++
       High contrast theme with layered rendering
       ++++++++++++++++++++++++++++++++++++++++++
@@ -42,11 +42,11 @@
 
 		  -->
   <!-- ===================================================== -->
-  <!-- Define the layers menu                                -->
+  <!-- DEFINE THE LAYERS MENU                                -->
   <!-- ===================================================== -->
 
   <stylemenu id="vol-menu" defaultvalue="vol-multi" defaultlang="en">
-    <layer id="major_roads" enabled="false">
+    <layer id="major_roads" enabled="true">
       <name lang="en" value="major roads"/>
       <cat id="major_roads"/>
     </layer>
@@ -90,6 +90,7 @@
       <overlay id="names"/>
     </layer>
   </stylemenu>   
+    
   <!-- ===================================================== -->
   <!-- BASIC FEATURES - land, sea, water                     -->
   <!-- ===================================================== -->
@@ -110,6 +111,7 @@
     <rule e="way" k="landuse|natural" v="reservoir|basin|water" zoom-min="8">
       <area fill="#DCDCDC"/>
     </rule>
+
   <!-- ===================================================== -->
   <!-- DEFINE WAYS - boundaries, elevation, roads/paths, rail-->
   <!-- ===================================================== -->
