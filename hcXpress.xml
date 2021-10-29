@@ -10,6 +10,15 @@
       High contrast theme
       +++++++++++++++++++ 
 
+      While hcXpress displays all layers, hcLayers theme allows the user to customize the layer set:
+        . Motorways/primary and trunc
+        . Secondary
+        . Tertiary, unclassified and roads
+        . Railways
+        . Cycling routes
+        . Hiking routes
+        . Footpaths and trails
+
       Color gradient:
         . #ffffff white
         . #E8E8E8 
@@ -28,7 +37,7 @@
       version 2.1.1
       ___________________
 
-      TODO (see in relevant section)
+      TODO Add railways (see in relevant section)
 
 		  -->
   <!-- ===================================================== -->
@@ -110,7 +119,7 @@
       </rule>
     </rule>
 
-  <!-- PLACE NAMES -->
+   <!-- PLACE NAMES -->
     <rule e="any" k="place" v="*">
       <rule e="any" k="place" v="town" zoom-min="10" zoom-max="10">
         <rule e="any" k="*" v="*" zoom-min="10" zoom-max="10">
@@ -122,6 +131,7 @@
           <circle r="1.6dp" stroke="#9B9B9B" stroke-width="1dp"/>
         </rule>
       </rule>
+
       <rule e="any" k="place" v="city" zoom-min="9" zoom-max="11">
         <rule e="any" k="*" v="*" zoom-min="6" zoom-max="9">
           <circle r="2dp" fill="#D3D3D3" stroke="darkGray" stroke-width="1"/>
@@ -131,9 +141,11 @@
           <circle r="1.8dp" fill="darkGray"/>
         </rule>
       </rule>
+
       <rule e="any" k="place" v="locality" zoom-min="16" country="*|!ES">
         <caption k="name" font-size="12dp" scale-font-size="17,1.2" fill="#000000" stroke="#ffffff" stroke-width="2.5dp"/>
       </rule>
+
       <rule e="any" k="place" v="hamlet" zoom-min="13" zoom-max="17">
         <rule e="any" k="*" v="*" zoom-min="13" zoom-max="13">
           <caption k="name" font-family="default" font-size="10dp" scale-font-size="13,1.2" fill="#000000" stroke="#ffffff" stroke-width="2dp"/>
@@ -142,6 +154,7 @@
           <caption k="name" font-family="default" font-style="bold" font-size="10dp" scale-font-size="13,1.2" fill="#000000" stroke="#ffffff" stroke-width="2.5dp"/>
         </rule>
       </rule>
+      
       <rule e="any" k="place" v="village" zoom-min="12" zoom-max="17">
         <rule e="any" k="*" v="*" zoom-min="11" zoom-max="12">
           <caption k="name" font-family="default" font-size="9dp" scale-font-size="11,1.2" fill="#000000" stroke="#ffffff" stroke-width="2dp"/>
@@ -150,9 +163,11 @@
           <caption k="name" font-family="default" font-style="bold" font-size="12dp" scale-font-size="13,1.2" fill="#000000" stroke="#ffffff" stroke-width="2.5dp"/>
         </rule>
       </rule>
+      
       <rule e="any" k="place" v="suburb" zoom-min="14" zoom-max="17">
         <caption k="name" upper-case="true" font-size="12dp" scale-font-size="14,1.2" fill="#343434" stroke="#f8f3f3" stroke-width="2dp"/>
       </rule>
+      
       <rule e="any" k="place" v="town" zoom-min="9" zoom-max="15">
         <rule e="any" k="*" v="*" zoom-min="9" zoom-max="11">
           <caption k="name" dy="12dp" scale-dy-size="9,1.2" font-family="sans_serif" font-style="bold" font-size="11dp" scale-font-size="10,1.2" fill="#000000" stroke="#ffffff" stroke-width="2.8dp"/>
@@ -161,6 +176,7 @@
           <caption k="name" font-family="sans_serif" font-style="bold" font-size="13dp" scale-font-size="12,1.2" fill="#000000" stroke="#ffffff" stroke-width="3dp"/>
         </rule>
       </rule>
+      
       <rule e="any" k="place" v="city" zoom-max="13">
         <rule e="any" k="place" v="city" zoom-max="10">
           <caption k="name" dy="15dp" scale-dy-size="9,1.15" upper-case="true" font-family="sans_serif" font-style="bold" font-size="9dp" scale-font-size="6,1.15" fill="#000000" stroke="#ffffff" stroke-width="3dp"/>
@@ -169,9 +185,11 @@
           <caption k="name" dy="15dp" scale-dy-size="11,1.15" font-family="sans_serif" font-style="bold" font-size="15dp" scale-font-size="11,1.15" fill="#000000" stroke="#ffffff" stroke-width="3dp"/>
         </rule>
       </rule>
+      
       <rule e="any" k="place" v="island" zoom-min="9" zoom-max="15">
         <caption k="name" font-style="bold" font-size="12" scale-font-size="9,1.2" fill="#000000" stroke="#ffffff" stroke-width="3.0"/>
       </rule>
+      
       <rule e="any" k="place" v="country" zoom-max="6">
         <caption k="name" upper-case="true" font-style="bold" font-size="25" fill="#000000" stroke="#ffffff" stroke-width="2.0"/>
       </rule>
