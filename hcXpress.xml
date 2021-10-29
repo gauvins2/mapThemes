@@ -26,7 +26,6 @@
       Release July, 2016
       Distributed under the Apache License
       version 2.1.1
-
       ___________________
 
       TODO (see in relevant section)
@@ -37,6 +36,7 @@
   <!-- ===================================================== -->
 
 	<!--  GLOBE SURFACE -->
+    <!--   open water  -->
     <rule e="way" k="natural" v="sea">
       <area fill="#DCDCDC"/>
     </rule>
@@ -47,7 +47,7 @@
     <rule e="way" k="landuse|wood|lm_landuse" v="*" closed="yes">
       <area fill="white"/>
     </rule>
-    <!--   water  -->
+    <!--   inland water  -->
     <rule e="way" k="landuse|natural" v="reservoir|basin|water" zoom-min="8">
       <area fill="#DCDCDC"/>
     </rule>
@@ -56,12 +56,57 @@
   <!-- ===================================================== -->
 
   <!-- ADMINISTRATIVE BOUNDARIES -->
+    <!--   States/provinces -->
     <rule e="way" k="admin_level" v="*">
       <rule e="way" k="admin_level" v="4" zoom-max="14">
         <line stroke="black" stroke-width="1dp" />
       </rule>
+    <!--   Countries  -->
       <rule e="way" k="admin_level" v="2" zoom-max="16">
         <line stroke="black" stroke-width="2dp" />
+      </rule>
+    </rule>
+
+  <!-- ELEVATION -->
+    <rule e="way" k="contour_ext" v="*">
+      <!--   contour lines level 13   -->
+      <rule e="way" k="contour_ext" v="*" zoom-min="13" zoom-max="13">
+        <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
+          <line stroke="gray" stroke-width="0.25dp"/>
+        </rule>
+      </rule>
+      <!--   contour lines level 14  -->
+      <rule e="way" k="contour_ext" v="*" zoom-min="14" zoom-max="14">
+        <rule e="way" k="contour_ext" v="elevation_minor">
+          <line stroke="gray" stroke-width="0.09dp" curve="cubic"/>
+        </rule>
+        <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
+          <line stroke="gray" stroke-width="0.18dp" curve="cubic"/>
+        </rule>
+      </rule>
+      <!--   contour lines level 15  -->
+      <rule e="way" k="contour_ext" v="*" zoom-min="15" zoom-max="16">
+        <rule e="way" k="contour_ext" v="elevation_minor">
+          <line stroke="gray" stroke-width="0.08dp" curve="cubic"/>
+        </rule>
+        <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
+          <line stroke="gray" stroke-width="0.15dp" curve="cubic"/>
+          <rule e="way" k="*" v="*">
+            <pathText k="ele" font-style="bold" font-size="5dp" scale-font-size="15,1.2" fill="#7C583A" stroke="#ffffff" stroke-width="1.5dp" rotate_up="false"/>
+          </rule>
+        </rule>
+      </rule>
+      <!--   contour lines level 17 and above   -->
+      <rule e="way" k="contour_ext" v="*" zoom-min="17">
+        <rule e="way" k="contour_ext" v="elevation_minor">
+          <line stroke="gray" stroke-width="0.05dp" curve="cubic"/>
+        </rule>
+        <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
+          <line stroke="gray" stroke-width="0.10dp" curve="cubic"/>
+          <rule e="way" k="*" v="*">
+            <pathText k="ele" dy="3dp" font-style="bold" font-size="7dp" fill="#7C583A" dx="30" scale-font-size="16,1.2" stroke="#ffffff" stroke-width="2dp" rotate_up="false"/>
+          </rule>
+        </rule>
       </rule>
     </rule>
 
@@ -132,49 +177,6 @@
       </rule>
     </rule>
 
-    <!-- ELEVATION -->
-    <rule e="way" k="contour_ext" v="*">
-      <!--   contour lines level 13   -->
-      <rule e="way" k="contour_ext" v="*" zoom-min="13" zoom-max="13">
-        <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
-          <line stroke="gray" stroke-width="0.25dp"/>
-        </rule>
-      </rule>
-      <!--   contour lines level 14  -->
-      <rule e="way" k="contour_ext" v="*" zoom-min="14" zoom-max="14">
-        <rule e="way" k="contour_ext" v="elevation_minor">
-          <line stroke="gray" stroke-width="0.09dp" curve="cubic"/>
-        </rule>
-        <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
-          <line stroke="gray" stroke-width="0.18dp" curve="cubic"/>
-        </rule>
-      </rule>
-      <!--   contour lines level 15  -->
-      <rule e="way" k="contour_ext" v="*" zoom-min="15" zoom-max="16">
-        <rule e="way" k="contour_ext" v="elevation_minor">
-          <line stroke="gray" stroke-width="0.08dp" curve="cubic"/>
-        </rule>
-        <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
-          <line stroke="gray" stroke-width="0.15dp" curve="cubic"/>
-          <rule e="way" k="*" v="*">
-            <pathText k="ele" font-style="bold" font-size="5dp" scale-font-size="15,1.2" fill="#7C583A" stroke="#ffffff" stroke-width="1.5dp" rotate_up="false"/>
-          </rule>
-        </rule>
-      </rule>
-      <!--   contour lines level 17 and above   -->
-      <rule e="way" k="contour_ext" v="*" zoom-min="17">
-        <rule e="way" k="contour_ext" v="elevation_minor">
-          <line stroke="gray" stroke-width="0.05dp" curve="cubic"/>
-        </rule>
-        <rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
-          <line stroke="gray" stroke-width="0.10dp" curve="cubic"/>
-          <rule e="way" k="*" v="*">
-            <pathText k="ele" dy="3dp" font-style="bold" font-size="7dp" fill="#7C583A" dx="30" scale-font-size="16,1.2" stroke="#ffffff" stroke-width="2dp" rotate_up="false"/>
-          </rule>
-        </rule>
-      </rule>
-    </rule>
-
   <!-- ROADS, ROUTES, POWER LINES & STREETS -->
   <!-- Streets (are displayed at zoom-min="16") (first way rendered) -->
       <rule e="way" k="highway" v="residential" zoom-min="16">
@@ -182,7 +184,7 @@
           <line stroke="white" stroke-width="1.10dp" stroke-linecap="butt"/>
       </rule>
   <!-- Roads (are always displayed) -->
-    <rule e="way" k="highway" v="motorway|trunk|primary|secondary|tertiary|unclassified|road|track|path">
+    <rule e="way" k="highway" v="motorway|trunk|primary|secondary|tertiary|unclassified|road|track|path|motorway_link|primary_link|secondary_link|tertiary_link|trunk_link">
       <rule e="way" k="highway" v="tertiary">
           <line stroke="black" stroke-width="1.50dp" />
           <line stroke="white" stroke-width="1.10dp" stroke-linecap="butt"/>
@@ -191,9 +193,13 @@
           <line stroke="black" stroke-width="1.50dp" stroke-dasharray="5,5" stroke-linecap="butt"/>
           <line stroke="white" stroke-width="1.10dp" stroke-linecap="butt"/>
       </rule>
-      <rule e="way" k="highway" v="motorway|trunk|primary">
-          <line stroke="black" stroke-width="4.5dp" curve="cubic" stroke-linecap="butt"/>
-          <line stroke="#808080" stroke-width="3dp" curve="cubic" stroke-linecap="butt"/>
+      <rule e="way" k="highway" v="motorway|trunk|primary|motorway_link|trunk_link|primary_link">
+          <line stroke="black" stroke-width="5.5dp" curve="cubic" stroke-linecap="butt"/>
+          <line stroke="#808080" stroke-width="4dp" curve="cubic" stroke-linecap="butt"/>
+          <!-- draw a median for motorways -->
+          <rule e="way" k="highway" v="motorway|motorway_link">
+              <line stroke="white" stroke-width=".5dp" curve="cubic" stroke-linecap="butt"/>
+          </rule>
       </rule>
       <rule e="way" k="highway" v="secondary">
           <line stroke="black" stroke-width="3dp" curve="cubic" stroke-linecap="butt"/>
