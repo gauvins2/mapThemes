@@ -214,87 +214,87 @@
     </rule>
   <!-- ROADS, ROUTES, POWER LINES & STREETS -->
   <!-- Streets (are displayed at zoom-min="16") (first way rendered) -->
-      <rule e="way" k="highway" v="residential" zoom-min="16">
-          <line stroke="black" stroke-width="1.50dp" />
-          <line stroke="white" stroke-width="1.10dp" stroke-linecap="butt"/>
-      </rule>
+    <rule e="way" k="highway" v="residential" zoom-min="16">
+        <line stroke="black" stroke-width="1.50dp" />
+        <line stroke="white" stroke-width="1.10dp" stroke-linecap="butt"/>
+    </rule>
   <!-- Roads -->
-      <rule e="way" k="highway" v="motorway|trunk|primary|secondary|tertiary|service|unclassified|road|track|path|motorway_link|primary_link|secondary_link|tertiary_link|trunk_link">
-        <rule cat="minor_roads" e="way" k="highway" v="tertiaryservice|service">
-            <line stroke="black" stroke-width="1.50dp" />
-            <line stroke="white" stroke-width="1.10dp" stroke-linecap="butt"/>
+    <rule e="way" k="highway" v="motorway|trunk|primary|secondary|tertiary|service|unclassified|road|track|path|motorway_link|primary_link|secondary_link|tertiary_link|trunk_link">
+      <rule cat="minor_roads" e="way" k="highway" v="service">
+        <line stroke="black" stroke-width="1.50dp"/>
+        <line stroke="white" stroke-width="1.10dp" stroke-linecap="butt"/>
+      </rule>
+      <rule cat="minor_roads" e="way" k="highway" v="unclassified|road">
+        <line stroke="black" stroke-width="1.50dp" stroke-dasharray="5,5" stroke-linecap="butt"/>
+        <line stroke="white" stroke-width="1.10dp" stroke-linecap="butt"/>
+      </rule>
+      <rule cat="tracks_and_paths" e="way" k="highway" v="track">
+        <line stroke="black" stroke-width="1dp" stroke-dasharray="10,10" curve="cubic" stroke-linecap="butt"/>
+      </rule>
+      <rule cat="tracks_and_paths" e="way" k="highway" v="path">
+        <line stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+      </rule>
+      <rule cat="secondary_roads" e="way" k="highway" v="secondary">
+        <line stroke="black" stroke-width="3dp" curve="cubic" stroke-linecap="butt"/>
+        <line stroke="gray" stroke-width="2dp" curve="cubic" stroke-linecap="butt"/>
+      </rule>
+      <rule cat="major_roads" e="way" k="highway" v="motorway|trunk|primary|motorway_link|trunk_link|primary_link">
+        <line stroke="black" stroke-width="5.5dp" curve="cubic" stroke-linecap="butt"/>
+        <line stroke="gray" stroke-width="4dp" curve="cubic" stroke-linecap="butt"/>
+        <!--  draw a median for motorways  -->
+        <rule e="way" k="highway" v="motorway|motorway_link">
+          <line stroke="white" stroke-width=".5dp" curve="cubic" stroke-linecap="butt"/>
         </rule>
-        <rule cat="minor_roads" e="way" k="highway" v="unclassified|road">
-            <line stroke="black" stroke-width="1.50dp" stroke-dasharray="5,5" stroke-linecap="butt"/>
-            <line stroke="white" stroke-width="1.10dp" stroke-linecap="butt"/>
-        </rule>
-        <rule cat="tracks_and_paths" e="way" k="highway" v="track">
-            <line stroke="black" stroke-width="1dp" stroke-dasharray="10,10" curve="cubic" stroke-linecap="butt"/>
-        </rule>
-        <rule cat="tracks_and_paths" e="way" k="highway" v="path" >
-            <line stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
-        </rule>
-        <rule cat="secondary_roads" e="way" k="highway" v="secondary">
-            <line stroke="black" stroke-width="3dp" curve="cubic" stroke-linecap="butt"/>
-            <line stroke="gray" stroke-width="2dp" curve="cubic" stroke-linecap="butt"/>
-        </rule>
-        <rule cat="major_roads" e="way" k="highway" v="motorway|trunk|primary|motorway_link|trunk_link|primary_link">
-            <line stroke="black" stroke-width="5.5dp" curve="cubic" stroke-linecap="butt"/>
-            <line stroke="gray" stroke-width="4dp" curve="cubic" stroke-linecap="butt"/>
-            <!-- draw a median for motorways -->
-            <rule e="way" k="highway" v="motorway|motorway_link">
-                <line stroke="white" stroke-width=".5dp" curve="cubic" stroke-linecap="butt"/>
-            </rule>
-        </rule>
-      </rule> 
+      </rule>
+    </rule>
   <!-- Footpaths (display at large scale) -->
-      <rule e="way" k="highway" v="footway" zoom-min="16">
-          <line stroke="black" stroke-width="1" stroke-dasharray="1,5"/>
-      </rule>
+    <rule e="way" k="highway" v="footway" zoom-min="16">
+        <line stroke="black" stroke-width="1" stroke-dasharray="1,5"/>
+    </rule>
   <!-- Routes -->
-       <rule e="way" k="cycleway|route" v="*">
-        <rule cat="cycling_routes" e="way" k="cycleway" v="*">
-            <line stroke="black" stroke-width="2dp" dy="2.5p"  curve="cubic"/>
-            <line stroke="white" stroke-width="1.5dp" dy="2.5p" stroke-dasharray="5,10" curve="cubic"/>
-        </rule>
-        <rule cat="cycling_routes" e="way" k="route" v="bicycle">
-            <line stroke="black" stroke-width="2dp" dy="2.5p"  curve="cubic"/>
-            <line stroke="white" stroke-width="1.5dp" dy="2.5p" stroke-dasharray="5,10" curve="cubic"/>
-        </rule>
-        <rule cat="hiking_routes" e="way" k="route" v="hiking|foot|mtb|ski|piste">
-            <line stroke="black" stroke-width="1dp" stroke-dasharray="1,5"/>
-        </rule>
+     <rule e="way" k="cycleway|route" v="*">
+      <rule cat="cycling_routes" e="way" k="cycleway" v="*">
+          <line stroke="black" stroke-width="2dp" dy="2.5p"  curve="cubic"/>
+          <line stroke="white" stroke-width="1.5dp" dy="2.5p" stroke-dasharray="5,10" curve="cubic"/>
       </rule>
+      <rule cat="cycling_routes" e="way" k="route" v="bicycle">
+          <line stroke="black" stroke-width="2dp" dy="2.5p"  curve="cubic"/>
+          <line stroke="white" stroke-width="1.5dp" dy="2.5p" stroke-dasharray="5,10" curve="cubic"/>
+      </rule>
+      <rule cat="hiking_routes" e="way" k="route" v="hiking|foot|mtb|ski|piste">
+          <line stroke="black" stroke-width="1dp" stroke-dasharray="1,5"/>
+      </rule>
+    </rule>
   <!-- Railoads -->
-      <rule cat="rail" e="way" k="railway" v="rail" >
-        <line stroke="black" stroke-width="4dp" stroke-linecap="butt"/>
-        <line stroke="white" stroke-width="4dp" stroke-dasharray="5,1" stroke-linecap="butt"/>
-        <line stroke="black" stroke-width="0.6dp" stroke-linecap="butt"/>
-      </rule>
+    <rule cat="rail" e="way" k="railway" v="rail" >
+      <line stroke="black" stroke-width="4dp" stroke-linecap="butt"/>
+      <line stroke="white" stroke-width="4dp" stroke-dasharray="5,1" stroke-linecap="butt"/>
+      <line stroke="black" stroke-width="0.6dp" stroke-linecap="butt"/>
+    </rule>
   <!-- Ferry -->
-      <rule e="way" k="route" v="ferry">
-        <line stroke="black" stroke-width="1dp" stroke-dasharray="12,12" stroke-linecap="butt"/>
-      </rule>
+    <rule e="way" k="route" v="ferry">
+      <line stroke="black" stroke-width="1dp" stroke-dasharray="12,12" stroke-linecap="butt"/>
+    </rule>
   <!-- Runways -->
-      <rule e="way" k="aeroway" v="*" >
-        <rule e="way" k="aeroway" v="runway">
-          <area fill="silver"/>
-        </rule>
-        <rule e="way" k="aeroway" v="*" closed="yes">
-        </rule>
-        <rule e="way" k="aeroway" v="*" closed="no">
-          <rule e="way" k="aeroway" v="runway" zoom-min="10">
-            <line stroke="silver" stroke-width="5dp" stroke-linecap="square"/>
-          </rule>
-        </rule>
-      <rule e="way" k="aeroway" v="*" closed="no"> </rule>
-        <rule e="way" k="aeroway" v="terminal" zoom-min="15">
-          <area fill="black"/>
-        </rule>
-        <rule e="way" k="*" v="*" zoom-min="16">
-          <caption k="name" font-style="italic" font-family="serif" font-size="10dp" scale-font-size="17,1.15" fill="black" stroke="white" stroke-width="2.5dp"/>
+    <rule e="way" k="aeroway" v="*" >
+      <rule e="way" k="aeroway" v="runway">
+        <area fill="silver"/>
+      </rule>
+      <rule e="way" k="aeroway" v="*" closed="yes">
+      </rule>
+      <rule e="way" k="aeroway" v="*" closed="no">
+        <rule e="way" k="aeroway" v="runway" zoom-min="10">
+          <line stroke="silver" stroke-width="5dp" stroke-linecap="square"/>
         </rule>
       </rule>
+    <rule e="way" k="aeroway" v="*" closed="no"> </rule>
+      <rule e="way" k="aeroway" v="terminal" zoom-min="15">
+        <area fill="black"/>
+      </rule>
+      <rule e="way" k="*" v="*" zoom-min="16">
+        <caption k="name" font-style="italic" font-family="serif" font-size="10dp" scale-font-size="17,1.15" fill="black" stroke="white" stroke-width="2.5dp"/>
+      </rule>
+    </rule>
   <!-- Power lines -->
     <rule e="way" k="power" v="line" zoom-min="14">
       <line stroke="gray" stroke-width="0.5dp" stroke-dasharray="10,3,1,3"/>
