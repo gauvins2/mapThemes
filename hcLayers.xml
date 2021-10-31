@@ -1,4 +1,4 @@
- <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <rendertheme
 	xmlns="http://mapsforge.org/renderTheme"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mapsforge.org/renderTheme https://raw.githubusercontent.com/mapsforge/mapsforge/dev/resources/renderTheme.xsd" version="1" locus-extended="1" fill-sea-areas="0" map-background="#ebeade">
@@ -311,6 +311,20 @@
       <rule e="way" k="*" v="*" zoom-min="21">
         <pathText k="name" font-style="bold" font-size="12dp" scale-font-size="16,1.15" fill="black" stroke="white" stroke-width="2dp" dx="18dp" dy="6.5dp"/>
       </rule>
+    </rule>
+    <rule  e="way" k="highway" v="trunk" zoom-min="13">
+      <rule e="way" k="hknetwork|network" v="~" zoom-max="13" cat="nocity">
+        <rule e="way" k="*" v="*" cat="road">
+          <caption k="ref" font-style="bold" font-size="9.5dp" line="#000000" fill="#444444" scale-font-size="12,1.08" bg-rect-fill="#ffffff" bg-rect-stroke="#444444" bg-rect-over="2.4dp" bg-rect-stroke-width="1.3dp" bg-rect-rounded="2.8dp"/>
+        </rule>
+      </rule>
+      <rule e="way" k="hknetwork|network" v="~" zoom-min="14">
+        <caption k="ref" font-style="bold" font-size="9.5dp" line="#000000" fill="#444444" scale-font-size="12,1.08" bg-rect-fill="#ffffff" bg-rect-stroke="#444444" bg-rect-over="2.4dp" bg-rect-stroke-width="1.3dp" bg-rect-rounded="2.8dp"/>
+      </rule>
+    </rule>
+
+    <rule e="way" k="highway" v="motorway" zoom-min="12">
+        <caption k="ref" font-style="bold" font-size="10dp" line="#000000" fill="#FFFFFF" scale-font-size="12,1.08" bg-rect-fill="#444444" bg-rect-stroke="#ffffff" bg-rect-over="2.5dp" bg-rect-stroke-width="1.3dp" bg-rect-rounded="2.8dp"/>
     </rule>
     <rule e="way" k="highway" v="primary|trunk|motorway" zoom-min="17">
       <rule e="way" k="*" v="*" >
