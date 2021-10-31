@@ -219,7 +219,7 @@
         <line stroke="white" stroke-width="1.10dp" stroke-linecap="butt"/>
     </rule>
   <!-- Roads -->
-    <rule e="way" k="highway" v="motorway|trunk|primary|secondary|tertiary|service|unclassified|road|track|path|motorway_link|primary_link|secondary_link|tertiary_link|trunk_link">
+    <rule e="way" k="highway" v="motorway|trunk|primary|secondary|tertiary|service|unclassified|road|track|path|steps|motorway_link|primary_link|secondary_link|tertiary_link|trunk_link">
       <rule cat="minor_roads" e="way" k="highway" v="tertiary|service">
         <line stroke="black" stroke-width="1.50dp"/>
         <line stroke="white" stroke-width="1.10dp" stroke-linecap="butt"/>
@@ -233,6 +233,10 @@
       </rule>
       <rule cat="tracks_and_paths" e="way" k="highway" v="path">
         <line stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+      </rule>
+      <rule cat="tracks_and_paths" e="way" k="highway" v="steps">
+        <line stroke="gray" stroke-width="1.50dp" stroke-dasharray="5,5" stroke-linecap="butt"/>
+        <line stroke="white" stroke-width="1.10dp" stroke-linecap="butt"/>
       </rule>
       <rule cat="secondary_roads" e="way" k="highway" v="secondary">
         <line stroke="black" stroke-width="3dp" curve="cubic" stroke-linecap="butt"/>
@@ -349,7 +353,7 @@
       </rule>
     </rule>
 
-    <rule cat="paths" e="way" k="highway" v="footway|path|bridleway|cycleway|steps" zoom-min="17">
+    <rule cat="tracks_and_paths" e="way" k="highway" v="footway|path|bridleway|cycleway|steps" zoom-min="17">
       <rule e="way" k="*" v="*" zoom-max="18">
         <pathText k="name" font-style="normal" font-size="6dp" scale-font-size="16,1.15" fill="black" stroke="white" stroke-width="4dp" dx="6dp" dy="2.5dp"/>
       </rule>
